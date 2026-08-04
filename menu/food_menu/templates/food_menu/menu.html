@@ -1,0 +1,18 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Menu</title>
+    <link rel="stylesheet" href="{% static 'food_menu/styles.css' %}">
+</head>
+<body>
+    {% for item in food_items %}
+        <h1>{{ item.name}}</h1>
+        <p>{{ item.description }}</p>
+        <p>MWK{{ item.price|floatformat:2 }}</p>
+    {% endfor %}
+</body>
+</html>
