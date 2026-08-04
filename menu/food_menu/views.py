@@ -10,6 +10,11 @@ def index(request):
                     context=context
                   )
 
+def detail(request, item_id):
+    food_item = FoodItem.objects.get(id=item_id)
+    context = {"food_item": food_item}
+    return render(request, "food_menu/detail.html", context=context)
+
 
 def item(request):
     return HttpResponse("This is the item view.")
