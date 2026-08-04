@@ -5,8 +5,9 @@ from food_menu.models import FoodItem
 
 def index(request):
     food_items = FoodItem.objects.all()
+    context =  {"food_items": food_items}
     return render(request, "food_menu/menu.html", 
-                  {"food_items": food_items}
+                    context=context
                   )
 
 
