@@ -1,38 +1,33 @@
 {% extends 'food_menu/base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food Menu</title>
-    <!-- <link rel="stylesheet" href="{% static 'food_menu/styles.css' %}"> -->
-     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-</head>
+    {% block content %}
+    <img src="{% static 'food_menu/images/hero_section.jpg' %}" alt="Food Menu" class="w-full h-100 object-cover">    <div>
+         {% for item in food_items %}
+        <div>
 
-<body class="bg-gray-100">
-    <nav>
-        <div class="flex justify-between items-center p-4 bg-green-600">
-            <a href="http://" class="text-5xl font-bold text-yellow-400">Crave<span class="text-orange-500 font-bold">.</span></a>
-            <div class="space-x-6 text-white">
-                <a href="http://">Contact</a>
-                <a href="http://">About</a>
-                <a href="http://">Location</a>
+            <div class="m-10 flex rounded-sm justify-center">
+                <div>
+                <img src="{{ item.image }}" alt="{{ item.description }}" class="w-64 rounded-sm">
+                    </div>
+            <div class="mx-16">
+
+                <div>
+                     <h1 class="text-3xl font-bold"><a href="{% url 'food_menu:detail' item.id %}">{{ item.name}}</a></h1>
+
+                </div>
+
+                <div>
+                    <p>{{ item.description }}</p>
+                    <p class="mb-3 text-orange-400 font-bold">MWK{{ item.price|floatformat:2 }}</p>
+                </div>
+
+                <div>
+                    <a href="{% url 'food_menu:detail' item.id %}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mb-5 rounded">View Details</a>
+                </div>
             </div>
         </div>
-    </nav>
-    {% block content %}
-    <main>
-    {% for item in food_items %}
-    <div class="">
-        <h1 class="text-3xl font-bold underline"><a href="{% url 'food_menu:detail' item.id %}">{{ item.name}}</a></h1>
-        <p>{{ item.description }}</p>
-        <p class="price">MWK{{ item.price|floatformat:2 }}</p>
+        {% endfor %}
     </div>
-    {% endfor %}
-    </main>
-    {% endblock %}
-</body>
 
-</html>
+    {% endblock %}

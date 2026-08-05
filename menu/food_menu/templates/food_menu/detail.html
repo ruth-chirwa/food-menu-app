@@ -5,7 +5,21 @@
 {% block title %}{{ food_item.name }}{% endblock %}
 
 {% block content %}
-    <h1 class="text-4xl font-bold text-orange-500 items-center">{{ food_item.name }}</h1>
-    <p>{{ food_item.description }}</p>
-    <p class="price">MWK{{ food_item.price|floatformat:2 }}</p>
+ <div class="m-10 flex">
+    <div>
+     <img class="w-128 rounded" src="{{ food_item.image }}" alt="{{ food_item.description }}">
+     </div>
+
+     <div class="mx-16">
+        <div>
+             <h1 class="text-4xl font-bold text-orange-500">{{ food_item.name }}</h1>
+        </div>
+        
+        <div><p>{{ food_item.description }}</p></div>
+        <div><p class="price text-green-600 font-bold mb-8">MWK{{ food_item.price|floatformat:2 }}</p></div>
+    
+        <a href="" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</a>
+        <a href="" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</a>
+    </div>
+</div>
 {% endblock %}

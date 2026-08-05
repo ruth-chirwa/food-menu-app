@@ -13,6 +13,6 @@ class FoodItemAdmin(admin.ModelAdmin):
     list_filter = ("price",)
 
     fieldsets = (
-        ("Basic Information", {"fields": ("name", "description")}),
+        ("Basic Information", {"fields": ("name", "description", "image")}),
         ("Pricing", {"fields": ("price",)}),
     )
