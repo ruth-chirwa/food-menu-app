@@ -7,13 +7,13 @@ def index(request):
     food_items = FoodItem.objects.all()
     context =  {"food_items": food_items}
     return render(request, "food_menu/menu.html", 
-                    context=context
+                    context
                   )
 
 def detail(request, item_id):
     food_item = FoodItem.objects.get(id=item_id)
     context = {"food_item": food_item}
-    return render(request, "food_menu/detail.html", context=context)
+    return render(request, "food_menu/detail.html", context)
 
 
 def item(request):
