@@ -2,10 +2,30 @@
 {% load static %}
 
 {% block content %}
+<div class="relative">
+    <img src="{% static 'food_menu/images/hero_section.jpg' %}"
+         alt="Food Menu"
+         class="w-full h-80 object-cover">
 
-<img src="{% static 'food_menu/images/hero_section.jpg' %}"
-     alt="Food Menu"
-     class="w-full h-80 object-cover">
+    
+    <div class="absolute inset-0 bg-black/40"></div>
+
+    
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+        <h1 class="text-white text-5xl font-bold mb-3">
+            Your cravings start here
+        </h1>
+
+        <p class="text-white text-lg mb-6">
+            Discover delicious meals made for every craving.
+        </p>
+
+        <a href="http://"
+           class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full transition">
+            Explore Menu
+        </a>
+    </div>
+</div>
 
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-10 items-stretch">
 
@@ -15,7 +35,7 @@
 
         <img src="{{ item.image }}"
              alt="{{ item.description }}"
-             class="w-full h-56 object-cover">
+             class="w-full h-56 object-cover hover:scale-105 transition duration-300">
 
         <div class="p-5">
 
