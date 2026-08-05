@@ -1,16 +1,11 @@
+{% extends 'food_menu/base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ food_item.name }}</title>
-    <link rel="stylesheet" href="{% static 'food_menu/styles.css' %}">
-</head>
-<body>
-    <h1>{{ food_item.name }}</h1>
+
+{% block title %}{{ food_item.name }}{% endblock %}
+
+{% block content %}
+    <h1 class="text-4xl font-bold text-orange-500 items-center">{{ food_item.name }}</h1>
     <p>{{ food_item.description }}</p>
     <p class="price">MWK{{ food_item.price|floatformat:2 }}</p>
-</body>
-</html>
+{% endblock %}

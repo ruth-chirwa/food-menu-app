@@ -1,4 +1,3 @@
-{% extends 'food_menu/base.html' %}
 {% load static %}
 
 <!DOCTYPE html>
@@ -23,15 +22,6 @@
         </div>
     </nav>
     {% block content %}
-    <main>
-    {% for item in food_items %}
-    <div class="">
-        <h1 class="text-3xl font-bold underline"><a href="{% url 'food_menu:detail' item.id %}">{{ item.name}}</a></h1>
-        <p>{{ item.description }}</p>
-        <p class="price">MWK{{ item.price|floatformat:2 }}</p>
-    </div>
-    {% endfor %}
-    </main>
     {% endblock %}
 </body>
 
