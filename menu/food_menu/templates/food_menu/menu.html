@@ -5,18 +5,19 @@
 <div class="relative">
     <img src="{% static 'food_menu/images/hero_section.jpg' %}"
          alt="Food Menu"
-         class="w-full h-80 object-cover">
+         class="w-full h-80 md:h-80
+lg:h-screen object-cover">
 
     
     <div class="absolute inset-0 bg-black/40"></div>
 
     
     <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-        <h1 class="text-white text-5xl font-bold mb-3">
+        <h1 class="text-white text-5xl md:text-5xl lg:text-7xl font-bold mb-3">
             Your cravings start here
         </h1>
 
-        <p class="text-white text-lg mb-6">
+        <p class="text-white text-md text-sm text-lg mb-6">
             Discover delicious meals made for every craving.
         </p>
 
@@ -27,8 +28,14 @@
     </div>
 </div>
 
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-10 items-stretch">
-
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  md:grid-cols-2 gap-8 p-10 items-stretch">
+   <div class="flex flex-col">
+ <h1 class="text-orange-400 text-7xl font-bold mb-3">
+            What are you craving?
+        </h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id aliquam accusantium perferendis tenetur veniam laboriosam qui dolorem explicabo sunt dolorum! Soluta minus ea in, distinctio voluptate necessitatibus repellendus quo dignissimos!</p>
+         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id aliquam accusantium perferendis tenetur veniam laboriosam qui dolorem explicabo sunt dolorum! Soluta minus ea in, distinctio voluptate necessitatibus repellendus quo dignissimos!</p>
+</div>
     {% for item in food_items %}
 
     <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 hover:-translate-y-1 overflow-hidden">
@@ -49,7 +56,7 @@
                 {{ item.description }}
             </p>
 
-            <p class="text-green-600 font-bold mt-3">
+            <p class="text-orange-500 font-bold mt-3">
                 MWK{{ item.price|floatformat:2 }}
             </p>
 

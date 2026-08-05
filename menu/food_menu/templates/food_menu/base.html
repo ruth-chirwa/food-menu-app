@@ -14,13 +14,21 @@
     <nav>
         <div class="flex justify-between items-center p-4 bg-green-600">
             <a href="{% url 'food_menu:index' %}" class="text-5xl font-bold text-yellow-400">Crave<span class="text-orange-500 font-bold">.</span></a>
-            <div class="space-x-6 text-white">
+            <div class="hidden md:flex space-x-6 text-white">
                 <a href="http://">Menu</a>
                 <a href="http://">Catergories</a>
                 <a href="http://">Orders</a>
                 <a href="http://">Contact</a>
             </div>
+
+                <button class="md:hidden text-2xl my-5 text-white focus:outline-none" id="menu-toggle">
+        ☰
+    </button>
         </div>
+
+
+    
+
     </nav>
     {% block content %}
     {% endblock %}
