@@ -1,33 +1,49 @@
 {% extends 'food_menu/base.html' %}
 {% load static %}
 
-    {% block content %}
-    <img src="{% static 'food_menu/images/hero_section.jpg' %}" alt="Food Menu" class="w-full h-100 object-cover">    <div>
-         {% for item in food_items %}
-        <div>
+{% block content %}
 
-            <div class="m-10 flex rounded-sm justify-center">
-                <div>
-                <img src="{{ item.image }}" alt="{{ item.description }}" class="w-64 rounded-sm">
-                    </div>
-            <div class="mx-16">
+<img src="{% static 'food_menu/images/hero_section.jpg' %}"
+     alt="Food Menu"
+     class="w-full h-80 object-cover">
 
-                <div>
-                     <h1 class="text-3xl font-bold"><a href="{% url 'food_menu:detail' item.id %}">{{ item.name}}</a></h1>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-10 items-stretch">
 
-                </div>
+    {% for item in food_items %}
 
-                <div>
-                    <p>{{ item.description }}</p>
-                    <p class="mb-3 text-orange-400 font-bold">MWK{{ item.price|floatformat:2 }}</p>
-                </div>
+    <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 hover:-translate-y-1 overflow-hidden">
 
-                <div>
-                    <a href="{% url 'food_menu:detail' item.id %}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mb-5 rounded">View Details</a>
-                </div>
-            </div>
+        <img src="{{ item.image }}"
+             alt="{{ item.description }}"
+             class="w-full h-56 object-cover">
+
+        <div class="p-5">
+
+            <h1 class="text-2xl font-bold">
+                <a href="{% url 'food_menu:detail' item.id %}">
+                    {{ item.name }}
+                </a>
+            </h1>
+
+            <p class="text-gray-600 mt-2">
+                {{ item.description }}
+            </p>
+
+            <p class="text-green-600 font-bold mt-3">
+                MWK{{ item.price|floatformat:2 }}
+            </p>
+
+            <a href="{% url 'food_menu:detail' item.id %}"
+               class="inline-block mt-5 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition duration-300">
+                View Details
+            </a>
+
         </div>
-        {% endfor %}
+
     </div>
 
-    {% endblock %}
+    {% endfor %}
+
+</div>
+
+{% endblock %}

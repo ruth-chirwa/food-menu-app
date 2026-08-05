@@ -1,0 +1,16 @@
+{% extends "food_menu/base.html" %}
+{% block content %}
+    <div class="mx-16">
+    <h1 class="text-orange-500 text-5xl font-bold items-center justify-center">Create Food Item</h1>
+    <form method="post" class="border border-gray-300 p-4 rounded-lg shadow-md mt-4">
+        {% csrf_token %}
+        {{ form }}
+
+        <!-- <div>
+            <label>Name</label>
+            {{ form.name }}
+        </div> -->
+        <button type="submit" class="rounded bg-blue-700 hover:bg-blue-400 px-4 py-2">Create</button>
+    </form>
+    </div>
+{% endblock %}
