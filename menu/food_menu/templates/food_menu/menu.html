@@ -11,7 +11,7 @@
 <body>
     {% for item in food_items %}
     <div class="food-item">
-        <h1><a href="{% url 'detail' item.id %}">{{ item.name}}</a></h1>
+        <h1><a href="{% url 'food_menu:detail' item.id %}">{{ item.name}}</a></h1>
         <p>{{ item.description }}</p>
         <p class="price">MWK{{ item.price|floatformat:2 }}</p>
     </div>
