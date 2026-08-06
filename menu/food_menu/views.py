@@ -47,4 +47,4 @@ def delete_food_item(request, item_id):
           food_item.delete()
           return redirect('food_menu:index')
   context = {"food_item": food_item}
-  return render(request, "food_menu/create_item.html", context)
+  return render(request, "food_menu/delete_item.html", context)

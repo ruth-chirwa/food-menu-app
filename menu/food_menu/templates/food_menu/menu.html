@@ -9,7 +9,7 @@
 lg:h-screen object-cover">
 
     
-    <div class="absolute inset-0 bg-black/40"></div>
+    <div class="absolute inset-0 bg-black/30"></div>
 
     
     <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
@@ -46,7 +46,7 @@ lg:h-screen object-cover">
 
         <div class="p-5">
 
-            <h1 class="text-2xl font-bold">
+            <h1 class="text-3xl font-bold">
                 <a href="{% url 'food_menu:detail' item.id %}">
                     {{ item.name }}
                 </a>
@@ -56,12 +56,12 @@ lg:h-screen object-cover">
                 {{ item.description }}
             </p>
 
-            <p class="text-orange-500 font-bold mt-3">
+            <p class="text-gray-500 font-semibold text-lg mt-3">
                 MWK{{ item.price|floatformat:2 }}
             </p>
 
             <a href="{% url 'food_menu:detail' item.id %}"
-               class="inline-block mt-5 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition duration-300">
+               class="inline-block mt-5 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded transition duration-300">
                 View Details
             </a>
 
