@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from django.contrib import messages
 from authentication.forms import RegistrationForm
 from django.contrib.auth import logout
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def register(request):
     form = RegistrationForm()
@@ -22,3 +22,7 @@ def register(request):
 def logout_view(request):
     logout(request)
     return render(request, 'authentication/logout.html')
+
+@login_required
+def profile_view(request):
+    return render(request, 'authentication/profile.html')

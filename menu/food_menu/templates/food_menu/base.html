@@ -16,11 +16,11 @@
             <a href="{% url 'food_menu:index' %}" class="text-5xl font-bold text-yellow-400">Crave<span class="text-orange-500 font-bold">.</span></a>
             <div class="hidden md:flex space-x-6 text-white">
             {% if user.is_authenticated %}
-                <a href="http://">Menu</a>
+                <!-- <a href="http://">Menu</a>
                 <a href="http://">Categories</a>
                 <a href="http://">Orders</a>
-                <a href="http://">Contact</a>
-                <a href="">{{user.username}}</a>
+                <a href="http://">Contact</a> -->
+                <a href="{% url 'profile' %}">{{user.username}}</a>
                 <a href="{% url 'logout' %}">Logout</a>
             {% else %}
                 <a href="{% url 'login' %}">Login</a>
