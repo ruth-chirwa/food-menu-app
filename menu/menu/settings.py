@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -121,10 +121,10 @@ STATIC_URL = "static/"
 # Where Django will collect static files for production
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# Additional directories to look for static files
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',  # Your global static folder
-]
+# # Additional directories to look for static files
+# STATICFILES_DIRS = [
+#     BASE_DIR / 'static',  # Your global static folder
+# ]
 
 
 # Default primary key field type
@@ -135,5 +135,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_REDIRECT_URL = "food_menu:index"
 
-
 LOGIN_URL = 'login'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'pictures')
+
+MEDIA_URL = '/profile_pictures/'
