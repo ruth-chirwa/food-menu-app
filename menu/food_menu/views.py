@@ -3,8 +3,10 @@ from django.shortcuts import redirect, render
 from django.template import context
 from food_menu.models import FoodItem
 from food_menu.forms import FoodItemForm
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
+@login_required
 def index(request):
     food_items = FoodItem.objects.all()
     context =  {"food_items": food_items}
