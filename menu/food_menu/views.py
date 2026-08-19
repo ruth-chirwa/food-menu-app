@@ -1,10 +1,14 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.template import context
+from django.views.generic import DeleteView
+from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.detail import DetailView
 from food_menu.models import FoodItem
 from food_menu.forms import FoodItemForm
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
+
 # Create your views here.
 from django.views.generic.list import ListView
 # @login_required
@@ -31,28 +35,40 @@ class FoodDetailClassView(DetailView):
     template_name = 'food_menu/detail.html'
     context_object_name = 'food_item'
 
-def create_food_item(request):
-  if request.method == 'POST':
-    form = FoodItemForm(request.POST, request.FILES)
-    if form.is_valid():
-      form.save()
-      return redirect('food_menu:index')
-  else:
-    form = FoodItemForm()
-    context = {'form': form}
-  return render(request, 'food_menu/create_item.html', context)
+# def create_food_item(request):
+#   if request.method == 'POST':
+#     form = FoodItemForm(request.POST, request.FILES)
+#     if form.is_valid():
+#       form.save()
+#       return redirect('food_menu:index')
+#   else:
+#     form = FoodItemForm()
+#     context = {'form': form}
+#   return render(request, 'food_menu/create_item.html', context)
 
-def update_food_item(request, item_id):
-    food_item = FoodItem.objects.get(id=item_id)
-    if request.method == 'POST':
-        form = FoodItemForm(request.POST, request.FILES, instance=food_item)
-        if form.is_valid():
-            form.save()
-            return redirect('food_menu:detail', item_id=food_item.id)
-    else:
-        form = FoodItemForm(instance=food_item)
-    context = {'form': form, 'food_item': food_item}
-    return render(request, 'food_menu/create_item.html', context)
+class CreateFoodItemClassView(CreateView):
+    model = FoodItem
+    fields = ['name', 'description', 'price', 'image']
+
+
+# def update_food_item(request, item_id):
+#     food_item = FoodItem.objects.get(id=item_id)
+#     if request.method == 'POST':
+#         form = FoodItemForm(request.POST, request.FILES, instance=food_item)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('food_menu:detail', item_id=food_item.id)
+#     else:
+#         form = FoodItemForm(instance=food_item)
+#     context = {'form': form, 'food_item': food_item}
+#     return render(request, 'food_menu/create_item.html', context)
+
+
+class UpdateClassView(UpdateView):
+    model = FoodItem
+    fields = ['name', 'description', 'price', 'image']
+    template_name_suffix = '_update_form'
+    
 
 def delete_food_item(request, item_id):
   food_item = FoodItem.objects.get(id=item_id)
@@ -61,3 +77,9 @@ def delete_food_item(request, item_id):
           return redirect('food_menu:index')
   context = {"food_item": food_item}
   return render(request, "food_menu/delete_item.html", context)
+
+class DeleteClassView(DeleteView):
+    model = FoodItem
+    # fields = ['name', 'description', 'price', 'image']
+    template_name_suffix = '_confirm_delete_form'
+    success_url = reverse_lazy("food_menu:index")
